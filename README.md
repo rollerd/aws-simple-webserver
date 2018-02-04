@@ -40,6 +40,14 @@ Run the following commands, checking that the ouput matches what you expect each
 Once Terraform has completed its build out, enter the `ansible/` directory and run: `ansible-playbook configure_webserver.yml`
 Ansible will use the bastion as a jump host to configure the webserver, so the playbook run may be a little slower than what you normally see.
 
+#### Viewing website
+Since we did not configure DNS for this service, we can find the auto-generate AWS ELB DNS name by using the GUI and navigating to EC2 > LoadBalancers > Select webserver-elb > Copy `DNS name` from the description
 
+##### Tests
+There are just a few basic tests in the tests.py file that can be run simply by ```python tests.py```
+
+
+##### Author
+David Roller
 
 
