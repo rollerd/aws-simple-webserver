@@ -16,19 +16,19 @@ This set of Ansible and Terraform configurations builds out the following resour
 * [Python3.x](https://www.python.org/)
 
 #### Usage
-First we need to create an SSH keypair that will be used in our EC2 instances:
-* You can create this keypair manually or run the `create_keys.sh` script in the `keys/` directory of this project
-  * **Note:** The script does not create a passphrase, so if you would like to create the keypair manually you will need to export the contents of the **public** key as an environment variable called: `TF_VARS_ec2_public_key` and add the key via ssh-agent
+* First we need to create an SSH keypair that will be used in our EC2 instances:
+  * You can create this keypair manually or run the `create_keys.sh` script in the `keys/` directory of this project
+    * **Note:** The script does not create a passphrase, so if you would like to create the keypair manually you will need to export the contents of the **public** key as an environment variable called: `TF_VARS_ec2_public_key` and add the key via ssh-agent
 
-Next, we need to setup our secrets for use by Terraform, Ansible, and boto:
+* Next, we need to setup our secrets for use by Terraform, Ansible, and boto:
 
-* Edit the `set_env.sh` file and enter your data for the AWS_SECRET_ACCESS_KEY and AWS_ACCESS_KEY_ID
-  * **Note:** If you change the aws region, you will need to update the AMIs in the main.tf Terraform config file to AMIs for that region.
-* Source the `set_env.sh` file: `. ./set_env.sh`
+  * Edit the `set_env.sh` file and enter your data for the AWS_SECRET_ACCESS_KEY and AWS_ACCESS_KEY_ID
+    * **Note:** If you change the aws region, you will need to update the AMIs in the main.tf Terraform config file to AMIs for that region.
+  * Source the `set_env.sh` file: `. ./set_env.sh`
 
-Now we just need to create a Python virtualenv and install the requirements for Ansible:
-* You can use [mkvirtualenv](https://virtualenvwrapper.readthedocs.io/en/latest/) or build and activate the virtualenv manually
-* pip install the requirements: `pip install -r requirements.txt`
+* Now we just need to create a Python virtualenv and install the requirements for Ansible:
+  * You can use [mkvirtualenv](https://virtualenvwrapper.readthedocs.io/en/latest/) or build and activate the virtualenv manually
+  * pip install the requirements: `pip install -r requirements.txt`
 
 ###### Running Terraform
 Run the following commands, checking that the ouput matches what you expect each time:
