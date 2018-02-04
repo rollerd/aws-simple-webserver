@@ -1,0 +1,42 @@
+---
+- name: Update system
+  yum:
+    name: "*"
+    update_cache: yes
+
+- name: Install epel repo
+  yum:
+    name: epel-release
+    state: present
+
+- name: Install nginx
+  yum:
+    name: nginx
+    state: present
+
+- name: Copy basic nginx config template to server
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    backup: yes
+
+- name: Create certs directory for nginx
+  file:
+    path: /etc/nginx/certs
+    owner: root
+    group: root
+    state: directory
+
+- name: Create dummy localhost certs for ngninx
+  command: /etc/pki/tls/certs/make-dummy-cert /etc/nginx/certs/localhost
+
+- name: Copy static html file to server
+  copy:
+    src: index.html
+    dest: /usr/share/nginx/html/index.html
+
+- name: Restart nginx service
+  service: 
+    name: nginx
+    state: restarted
+

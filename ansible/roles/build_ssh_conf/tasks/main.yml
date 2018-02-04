@@ -1,0 +1,12 @@
+---
+- debug:
+    msg: "{% set test = vars.groups.tag_Name_bastion %}{% set test2 = test[0] %}{{ hostvars[test2].ec2_ip_address }}"
+
+- name: Copy ssh conf template to root of ansible directory
+  become: no
+  template:
+    src: ssh.cfg.j2
+    dest: ./ssh.cfg
+  delegate_to: localhost
+  notify: remove ssh cfg
+

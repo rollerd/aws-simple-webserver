@@ -1,0 +1,7 @@
+Host 10.100.*
+  Port 22
+  ProxyCommand ssh -o StrictHostKeyChecking=no -i ../keys/id_rsa -W %h:%p ubuntu@{% set test = vars.groups.tag_Name_bastion %}{% set test2 = test[0] %}{{ hostvars[test2].ec2_ip_address }}
+  StrictHostKeyChecking no
+
+Host *
+  StrictHostKeyChecking no

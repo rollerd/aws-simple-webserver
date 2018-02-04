@@ -1,0 +1,5 @@
+.terraform/
+.python-version
+terraform.tfstate*
+id_rsa*
+set_env.sh2

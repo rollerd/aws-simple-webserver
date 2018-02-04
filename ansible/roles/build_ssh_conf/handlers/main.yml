@@ -1,0 +1,6 @@
+- name: remove ssh cfg
+  become: no
+  file:
+    path: ./ssh.cfg
+    state: absent
+  delegate_to: localhost
