@@ -10,7 +10,7 @@ This set of Ansible and Terraform configurations builds out the following resour
 
 * Webserver running NGINX in the private subnet
 
-* NLB for allowing HTTP/HTTPS traffic to the webserver
+* ELB for allowing HTTP/HTTPS traffic to the webserver
 #### Requirements
 * [Terraform](https://www.terraform.io/) >= v0.11.1
 * [Python3.x](https://www.python.org/)
